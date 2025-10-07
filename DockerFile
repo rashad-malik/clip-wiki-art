@@ -10,8 +10,6 @@ COPY . .
 # Install the Python dependencies from your requirements.txt file
 RUN pip install -r requirements.txt
 
-# Expose the port that Streamlit runs on
-EXPOSE 8501
-
-# The command to run when the container starts
-CMD ["streamlit", "run", "CLIP_app.py"]
+# The command to run when the container starts.
+# This is modified to run Streamlit on the required port.
+CMD ["streamlit", "run", "CLIP_app.py", "--server.port=7860", "--server.address=0.0.0.0"]
